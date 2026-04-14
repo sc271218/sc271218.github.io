@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Samu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 0.8s ease-out;
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.35);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        .glass-card h2 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .glass-card p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .project-card h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 12px;
+            margin-right: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .glass-card {
+                padding: 25px;
+                border-radius: 25px;
+            }
+
+            .glass-card h2 {
+                font-size: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ciao 👋</h1>
+            <p class="subtitle">Informatico esordiente | Creator | Problem Solver</p>
+        </header>
+
+        <section class="glass-card">
+            <h2>📌 Chi sono</h2>
+            <p>
+                Sono un informatico in fase di crescita, appassionato di tecnologia e creazione. Mi piace esplorare nuove tecnologie, 
+                imparare dai miei errori e condividere quello che scopro. Qui troverai i miei progetti, le mie idee e il mio viaggio nel 
+                mondo dello sviluppo software.
+            </p>
+            <p>
+                Credo nel learning by doing: ogni progetto è un'opportunità per imparare qualcosa di nuovo.
+            </p>
+            <div>
+                <a href="#progetti" class="btn">Vedi i miei progetti</a>
+                <a href="mailto:tuo.email@example.com" class="btn btn-outline">Contattami</a>
+            </div>
+        </section>
+
+        <section class="glass-card">
+            <h2>🚀 Le mie creazioni</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Home Server</h3>
+                    <p>Setup di un NAS con Linux Mint e Samba per il backup e lo storage locale in rete.</p>
+                    <span class="project-tag">Linux</span>
+                    <span class="project-tag">Networking</span>
+                </div>
+                <div class="project-card">
+                    <h3>Progetto 2</h3>
+                    <p>Descrivi qui il tuo secondo progetto. Quali tecnologie hai usato? Cosa hai imparato?</p>
+                    <span class="project-tag">Tecnologia</span>
+                    <span class="project-tag">Tag</span>
+                </div>
+                <div class="project-card">
+                    <h3>Progetto 3</h3>
+                    <p>Descrivi qui il tuo terzo progetto. Cosa lo rende particolare?</p>
+                    <span class="project-tag">Tech</span>
+                    <span class="project-tag">Tag</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card">
+            <h2>🎯 Skills & Interessi</h2>
+            <p>
+                <strong>In via di sviluppo:</strong> Python • JavaScript • Linux • Networking • Web Development • Self-hosted Infrastructure
+            </p>
+            <p>
+                <strong>Appassionato di:</strong> Open Source • Home Automation • Privacy & Security • Continuous Learning
+            </p>
+        </section>
+
+        <section class="glass-card">
+            <h2>📬 Resta in contatto</h2>
+            <p>Seguimi sui social o scrivimi direttamente per collaborazioni, domande o semplice chat tech.</p>
+            <div class="social-links">
+                <a href="https://github.com/sc271218" class="social-icon" title="GitHub">🐙</a>
+                <a href="https://twitter.com" class="social-icon" title="Twitter">𝕏</a>
+                <a href="https://linkedin.com" class="social-icon" title="LinkedIn">💼</a>
+                <a href="mailto:tuo.email@example.com" class="social-icon" title="Email">✉️</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>Made with ❤️ • Always learning</p>
+        </footer>
+    </div>
+</body>
+</html>
